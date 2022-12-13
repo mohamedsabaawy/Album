@@ -41,8 +41,10 @@ class PhotoController extends Controller
         $album =Album::with('photos')->find($request->album_id);
         $request->name->store($album->name,'public');
         $file = $request->name->store($album->name,'public') ;
+        $displayName = $request->displayName ?? $request->name->getClientOriginalName();
         $album->Photos()->create([
             'name' =>$this->FileName($file),
+            'displayName' =>$displayName,
         ]);
 
         return redirect()->back();

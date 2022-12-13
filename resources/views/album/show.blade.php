@@ -11,6 +11,9 @@
                 <div class="row">
                     @forelse($album->photos as $photo)
                         <div class="card col-12 col-md-6">
+                            <div class="card-header">
+                                {{$photo->displayName}}
+                            </div>
                             <div class="card-body">
                                 <img src="{{asset('photos/'.$album->name.'/'.$photo->name)}}">
                             </div>

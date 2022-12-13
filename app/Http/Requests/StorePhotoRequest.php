@@ -24,7 +24,7 @@ class StorePhotoRequest extends FormRequest
     public function rules()
     {
         return [
-            "name" => "required" //|mimes:JPEG,JPG,bmp,PNG
+            "name" => "required" ,//|mimes:JPEG,JPG,bmp,PNG
         ];
     }
 
@@ -32,6 +32,7 @@ class StorePhotoRequest extends FormRequest
     {
         return [
             'name.required'=>'no photo is selected',
+            'displayName.required'=>'Please Enter Name Photo',
             'name.mimes'=>'the select file not a valid file',
         ];
     }

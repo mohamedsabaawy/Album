@@ -18,6 +18,7 @@
                         <tr>
                             <th>No</th>
                             <th>Name</th>
+                            <th>No Of Photos</th>
                             <th>Photo Action</th>
                             <th>Album Action</th>
                         </tr>
@@ -27,6 +28,7 @@
                             <tr>
                                 <td>{{$loop->index+1}}</td>
                                 <td>{{$album->name}}</td>
+                                <td class="text-center"><span class=""> {{(count($album->Photos))}}</span></td>
                                 <td>
                                     <div class="">
                                         <a class="btn btn-primary" onclick="photoAdd({{$album->id}})" data-toggle="modal" data-target="#add_photo"><i class="fa fa-plus"></i></a>
@@ -110,8 +112,13 @@
                         @csrf
                         <div class="card-body">
                             <div class="form-group">
-                                <input type="hidden" name="album_id" accept="" id="album_id">
                                 <label for="exampleInputEmail1 "> Name</label>
+                                <input type="text" class="form-control  @error('displayName') is-invalid @enderror"
+                                       id="exampleInputEmail1" placeholder="displayName" name="displayName" value="{{old('displayName')}}">
+                            </div>
+                            <div class="form-group">
+                                <input type="hidden" name="album_id" accept="" id="album_id">
+                                <label for="exampleInputEmail1 "> File</label>
                                 <input type="file" class="form-control  @error('name') is-invalid @enderror"
                                        id="exampleInputEmail1" placeholder="name" name="name" value="{{old('name')}}">
                             </div>
